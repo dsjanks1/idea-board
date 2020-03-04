@@ -1,0 +1,64 @@
+<div class="container idea-grid">
+
+  <div class="row">
+
+    <div class="col-10 tile-container">
+        <!-- [@inOutAnimation]  -->
+        <!-- (click)="editIdea(idea, i)" -->
+
+
+      <div *ngFor="let idea of ideas; let i = index" class="col-3 idea-tile" >
+        <p>
+            <app-inline-edit [(ngModel)]="idea.title" type="text"> </app-inline-edit>
+
+
+        </p>
+        <p>
+            <app-inline-edit [(ngModel)]="idea.description" type="text"> </app-inline-edit>
+
+          {{idea.createdUpdatedTime}}
+        </p>
+      </div>
+
+    </div>
+
+    <div class="col-2 mt-22">
+      <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add Idea</button>
+
+    </div>
+
+
+
+
+  </div>
+</div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add idea</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-inline">
+      <div class="form-group">
+        <label for="title">Idea Title</label>
+        <!-- <input ngControl="ideaTitle" ngModel="ideaTitle" id="title" type="text" class="form-control mx-sm-3" placeholder="Title" name="title"> -->
+        <input id="ideaTitle" type="text" [(ngModel)]="ideaTitle" />
+  </div>
+      <div class="form-group">
+        <label for="sesciption">Idea Desciption</label>
+        <!-- <input id="title" type="text" class="form-control mx-sm-3" placeholder="Desciption" name="title"> -->
+        <textarea id="description" ncols="40" rows="5" placeholder="Desciption" [(ngModel)]="ideaDesciption"></textarea>
+        <!-- <input id="ideaTitle" type="text" [(ngModel)]="ideaTitle" /> -->
+
+  </div>
+   
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="addIdea()">Save</button>
+  </div>
+</ng-template>
